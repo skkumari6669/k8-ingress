@@ -46,7 +46,7 @@ kind: Ingress
 metadata:
     name: app1
     annotations:
-        kubernetes.io/ingress.class: alb
+        #kubernetes.io/ingress.class: alb (it is depricated so, in spec level ingressClassName: alb using directly)
         alb.ingress.kubernetes.io/scheme: internet-facing
         alb.ingress.kubernetes.io/target-type: ip
         alb.ingress.kubernetes.io/certificate-arn: #<give our certificate arn>
@@ -54,6 +54,7 @@ metadata:
         alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
         alb.ingress.kubernetes.io/group.name: expense
 spec:
+    ingressClassName: alb
     rules:
     - host: "app1.devops81s.online"
       http:
